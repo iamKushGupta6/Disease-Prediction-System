@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Healthcare</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fdffff;
+            background-image: url(https://www.alamy.com/indian-doctor-prescribing-medicine-to-the-patient-at-village-woman-wearing-sari-with-her-husband-getting-examine-by-medical-personrural-india-health-image454455094.html?imageid=1C560BDD-790D-4FA8-8CEE-ECF1D78AE24E&p=646737&pn=1&searchId=95bee1465e2671ea96084f0c9bba8c4b&searchtype=0);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        section {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Garamond', serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .service-card {
+            flex-direction: column;
+            display: flex;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #9ce2d2;
+            cursor: pointer;
+            transition: box-shadow 0.5s, transform 0.5s; /* Added transform transition */
+            overflow: hidden;
+            background:linear-gradient(135deg, #ecfaf7, #e0e0e0);
+        }
+
+        .service-card.expanded {
+            height: auto;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transform: scale(1.025); /* Scale the card when hovered */
+            border-color: #87e034; 
+            border-width: 2px; 
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .service-title {
+            font-size: 1.2em;
+            margin-bottom: 8px;
+            text-decoration: underline;
+        }
+
+        .service-description {
+            color: #555;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="nav">
+                <div class="logo">
+                    <img src={{url_for('static',filename='logo.png')}} alt="Logo">
+                </div>
+                <div class="links">
+                    <a href="./main.html">Home</a>
+                    <a href="./about.html">About</a>
+                    <a href="./doctors.html">Doctors</a>
+                    <a href="./services.html" class="mainlink">Services</a>
+                    <a href="./chatbot.html">Chatbot</a>
+                    <a href="./contacts.html">Contact</a>
+                    <a href="./learn.html">Learn more</a>
+                </div>
+            </div>
+    </header>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <section>
+        <h1>Our Services</h1>
+        <div class="service-card">
+            <!-- <img class="service-icon" src="icon1.png" alt="Service Icon 1"> -->
+            <h3 class="service-title">Primary Healthcare Services</h3>
+            <p class="service-description">Our team helps you with regular health checkups and treatments for you and your family. We're here to keep you healthy and happy.</p>
+        </div>
+        
+        <div class="service-card">
+            <!-- <img class="service-icon" src="icon1.png" alt="Service Icon 1"> -->
+            <h3 class="service-title">Learning About Health</h3>
+            <p class="service-description">Come join our classes to learn about staying healthy. We talk about eating well, staying calm, and how to deal with being sick.</p>
+            </p>
+        </div>
+        <div class="service-card">
+            <!-- <img class="service-icon" src="icon2.png" alt="Service Icon 2"> -->
+            <h3 class="service-title">Special Treatments</h3>
+            <p class="service-description">Advanced treatments and procedures delivered by experienced specialists.</p>
+        </div>
+        <div class="service-card">
+            <!-- <img class="service-icon" src="icon1.png" alt="Service Icon 1"> -->
+            <h3 class="service-title">Predicting Health Issues</h3>
+            <p class="service-description"> We use smart technology to guess if you might get sick in the future. Then, we give you tips to stay healthy and avoid getting sick.</p>
+        </div>
+        <div class="service-card">
+            <!-- <img class="service-icon" src="icon3.png" alt="Service Icon 3"> -->
+            <h3 class="service-title">Finding Out What's Wrong</h3>
+            <p class="service-description">Our high-tech machines help find out what's wrong with you quickly and accurately. That way, we can start fixing the problem sooner.</p>
+        </div>
+        <div class="service-card">
+            <!-- <img class="service-icon" src="icon3.png" alt="Service Icon 3"> -->
+            <h3 class="service-title">Health Camps in Your Area</h3>
+            <p class="service-description">We organize health camps near your home, where you can get free checkups, medicines, and advice from doctors. We care about your health, and we want to make it easy for you to stay healthy.</p>
+        </div>
+        <div class="service-card">
+            <!-- <img class="service-icon" src="icon3.png" alt="Service Icon 3"> -->
+            <h3 class="service-title">Women's Health Awareness Programs</h3>
+            <p class="service-description">We hold special programs just for women to learn about their health. We talk about important topics like pregnancy, childbirth, staying safe, and taking care of your body. These programs are fun and informative, and they help women feel confident and healthy.</p>
+        </div>
+        <div class="service-card">
+            <!-- <img class="service-icon" src="icon3.png" alt="Service Icon 3"> -->
+            <h3 class="service-title">Personalized Health Plans</h3>
+            <p class="service-description">    Our team creates personalized health plans just for you. We look at your lifestyle, your health goals, and any health problems you have, and we come up with a plan to help you feel your best.
+
+            </p>
+        </div>
+        <!-- Add more service cards as needed -->
+    </section>
+    <script>
+        window.addEventListener('scroll', function () {
+            var nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.display = 'none';
+            } else {
+                nav.style.display = 'flex';
+            }
+        });
+    </script>
+</body>
+
+</html>

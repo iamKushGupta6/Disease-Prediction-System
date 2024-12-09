@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Chatbot</title>
+    <link rel="stylesheet" href="../static/style.css">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        section {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative; /* Added position relative */
+        }
+
+        input[type="text"] {
+            width: calc(100% - 30px);
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            display: inline-block;
+            color: black;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 5px;
+            width: calc(100% - 30px);
+            display: block;
+        }
+
+        .suggestions {
+            max-height: 100px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 5px;
+            background-color: white;
+            position: absolute;
+            width: calc(100% - 42px); /* Adjusted width */
+            margin-left: 10px;
+            display: none;
+            z-index: 1;
+        }
+
+        .suggestions button {
+            display: block;
+            width: calc(100% - 12px); /* Adjusted width */
+            background-color: white;
+            border: none;
+            padding: 5px;
+            text-align: left;
+            cursor: pointer;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="wrapper">
+        <div class="nav">
+            <div class="logo">
+                <img src={{url_for('static',filename='logo.png' )}} alt="Logo">
+            </div>
+            <div class="links">
+                <a href="./main.html">Home</a>
+                <a href="./about.html" >About</a>
+                <a href="./doctors.html">Doctors</a>
+                <a href="./services.html">Services</a>
+                <a href="./chatbot.html" class="mainlink">Chatbot</a>
+                <a href="./contacts.html">Contact</a>
+                <a href="./learn.html">Learn more</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<br>
+<br>
+<br>
+<br>
+
+<section class="chat-bot">
+    <h3>Please enter symptoms below</h3>
+    <form id="symptoms-form" action="/output.html" method="post">
+        <div class="symptom-input-container">
+            <input type="text" id="symptom1" name="symptom1" placeholder="Enter symptom..." autocomplete="off">
+            <div id="suggestions1" class="suggestions"></div>
+        </div>
+        <div class="symptom-input-container">
+            <input type="text" id="symptom2" name="symptom2" placeholder="Enter symptom..." autocomplete="off">
+            <div id="suggestions2" class="suggestions"></div>
+        </div>
+        <div class="symptom-input-container">
+            <input type="text" id="symptom3" name="symptom3" placeholder="Enter symptom..." autocomplete="off">
+            <div id="suggestions3" class="suggestions"></div>
+        </div>
+        <div class="symptom-input-container">
+            <input type="text" id="symptom4" name="symptom4" placeholder="Enter symptom..." autocomplete="off">
+            <div id="suggestions4" class="suggestions"></div>
+        </div>
+        <div class="symptom-input-container">
+            <input type="text" id="symptom5" name="symptom5" placeholder="Enter symptom..." autocomplete="off">
+            <div id="suggestions5" class="suggestions"></div>
+        </div>
+        <button type="button" id="submit-btn">Submit</button>
+    </form>
+</section>
+
+<script>
+    const symptomsList = [
+    "itching", "skin rash", "nodal skin eruptions", "continuous sneezing", "shivering",
+    "chills", "joint pain", "stomach pain", "acidity", "ulcers on tongue", "muscle wasting",
+    "vomiting", "burning micturition", "spotting urination", "fatigue", "weight gain",
+    "anxiety", "cold hands and feets", "mood swings", "weight loss", "restlessness", 
+    "lethargy", "patches in throat", "irregular sugar level", "cough", "high fever", 
+    "sunken eyes", "breathlessness", "sweating", "dehydration", "indigestion", "headache",
+    "yellowish skin", "dark urine", "nausea", "loss of appetite", "pain behind the eyes",
+    "back pain", "constipation", "abdominal pain", "diarrhoea", "mild fever", "yellow urine",
+    "yellowing of eyes", "acute liver failure", "fluid overload", "swelling of stomach",
+    "swelled lymph nodes", "malaise", "blurred and distorted vision", "phlegm", 
+    "throat irritation", "redness of eyes", "sinus pressure", "runny nose", "congestion",
+    "chest pain", "weakness in limbs", "fast heart rate", "pain during bowel movements",
+    "pain in anal region", "bloody stool", "irritation in anus", "neck pain", "dizziness",
+    "cramps", "bruising", "obesity", "swollen legs", "swollen blood vessels",
+    "puffy face and eyes", "enlarged thyroid", "brittle nails", "swollen extremeties",
+    "excessive hunger", "extra marital contacts", "drying and tingling lips",
+    "slurred speech", "knee pain", "hip joint pain", "muscle weakness", "stiff neck",
+    "swelling joints", "movement stiffness", "spinning movements", "loss of balance",
+    "unsteadiness", "weakness of one body side", "loss of smell", "bladder discomfort",
+    "foul smell of urine", "continuous feel of urine", "passage of gases",
+    "internal itching", "toxic look (typhos)", "depression", "irritability", "muscle pain",
+    "altered sensorium", "red spots over body", "belly pain", "abnormal menstruation",
+    "dischromic  patches", "watering from eyes", "increased appetite", "polyuria",
+    "family history", "mucoid sputum", "rusty sputum", "lack of concentration",
+    "visual disturbances", "receiving blood transfusion", "receiving unsterile injections",
+    "coma", "stomach bleeding", "distention of abdomen", "history of alcohol consumption",
+    "fluid overload", "blood in sputum", "prominent veins on calf", "palpitations",
+    "painful walking", "pus filled pimples", "blackheads", "scurring", "skin peeling",
+    "silver like dusting", "small dents in nails", "inflammatory nails", "blister",
+    "red sore around nose", "yellow crust ooze", "prognosis","hypertension"];
+    // Function to display suggestions
+    function displaySuggestions(inputId) {
+        const input = document.getElementById(inputId);
+        const userInput = input.value.toLowerCase();
+        const suggestions = symptomsList.filter(symptom => symptom.toLowerCase().includes(userInput));
+
+        const suggestionsDiv = document.getElementById('suggestions' + inputId.charAt(inputId.length - 1));
+        suggestionsDiv.innerHTML = '';
+
+        suggestions.forEach((suggestion, index) => {
+            const suggestionBtn = document.createElement('button');
+            suggestionBtn.textContent = suggestion;
+            suggestionBtn.addEventListener('click', (event) => {
+                input.value = suggestion;
+                suggestionsDiv.style.display = 'none';
+                event.preventDefault();
+                event.stopPropagation();
+            });
+            suggestionBtn.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    input.value = suggestion;
+                    suggestionsDiv.style.display = 'none';
+                    event.preventDefault();
+                    event.stopPropagation();
+                } else if (event.key === 'ArrowDown') {
+                    const nextSuggestionBtn = suggestionsDiv.children[index + 1];
+                    if (nextSuggestionBtn) {
+                        nextSuggestionBtn.focus();
+                    }
+                } else if (event.key === 'ArrowUp') {
+                    const prevSuggestionBtn = suggestionsDiv.children[index - 1];
+                    if (prevSuggestionBtn) {
+                        prevSuggestionBtn.focus();
+                    } else {
+                        input.focus();
+                    }
+                }
+            });
+            suggestionsDiv.appendChild(suggestionBtn);
+        });
+
+        if (suggestions.length > 0 && input.value !== '') {
+            suggestionsDiv.style.display = 'block';
+        } else {
+            suggestionsDiv.style.display = 'none';
+        }
+    }
+
+    // Event listeners for input fields
+    document.querySelectorAll('input[type="text"]').forEach(input => {
+        input.addEventListener('input', () => {
+            displaySuggestions(input.id);
+        });
+    });
+
+    // Event listener for submit button
+    document.getElementById('submit-btn').addEventListener('click', () => {
+        submitForm();
+    });
+
+    // Function to submit form
+    function submitForm() {
+        const inputs = document.querySelectorAll('input[type="text"]');
+        for (const input of inputs) {
+            if (!input.value.trim()) {
+                alert("Please fill in all symptom fields.");
+                return;
+            }
+        }
+        document.getElementById('symptoms-form').submit();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn More - Healthcare</title>
+<link rel="stylesheet" href="../static/style.css">
+<style>
+body {
+font-family: 'Arial', sans-serif;
+margin: 0;
+padding: 0;
+background-color: #f4f4f4;
+}
+/*header {
+background-color: #333;
+color: #fff;
+padding: 10px;
+text-align: center;
+}*/
+section {
+max-width: 1200px;
+margin: 20px auto;
+padding: 20px;
+background-color: #fff;
+border-radius: 8px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h2 {
+color: #333;
+}
+.topic-card {
+display:flex;
+flex-direction: column;
+align-items: center;
+margin-bottom: 20px;
+padding: 20px;
+border: 1px solid #ddd;
+border-radius: 8px;
+transition: box-shadow 0.3s;
+}
+.topic-card:hover {
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.topic-img {
+width: 150px;
+height: 150px;
+border-radius: 50%;
+margin-bottom: 10px;
+object-fit: cover;
+}
+.topic-title {
+font-size: 1.2em;
+font-weight: bold;
+margin-bottom: 8px;
+}
+.topic-description {
+text-align: center;
+color: #555;
+}
+</style>
+</head>
+<body>
+<header>
+<div class="wrapper">
+<div class="nav">
+<div class="logo">
+<img src={{url_for('static',filename='logo.png')}} alt="Logo">
+</div>
+<div class="links">
+<a href="./main.html" >Home</a>
+<a href="./about.html">About</a>
+<a href="./doctors.html">Doctors</a>
+<a href="./services.html">Services</a>
+<a href="./chatbot.html">Chatbot</a>
+<a href="./contacts.html">Contact</a>
+<a href="./learn.html" class="mainlink">Learn more</a>
+</div>
+</div>
+</header>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+<section>
+<!-- Topic 1 -->
+<div class="topic-card">
+    <img class="topic-img" src={{url_for('static',filename='topic1.jpg')}} alt="Topic 1">
+    <h3 class="topic-title">Understanding Chronic Diseases</h3>
+    <p class="topic-description">Explore the causes, symptoms, and management of chronic diseases for a healthier life.</p>
+</div>
+<!-- Topic 2 -->
+<div class="topic-card">
+    <img class="topic-img" src={{url_for('static',filename='topic2.png')}} alt="Topic 2">
+    <h3 class="topic-title">Wellness and Nutrition</h3>
+    <p class="topic-description">Discover the importance of nutrition and wellness practices for overall well-being.</p>
+</div>
+<!-- Topic 3 -->
+<div class="topic-card">
+    <img class="topic-img" src={{url_for('static',filename='topic3.jpg')}} alt="Topic 3">
+    <h3 class="topic-title">Mental Health Awareness</h3>
+    <p class="topic-description">Learn about mental health conditions, coping strategies, and the importance of seeking help.</p>
+</div>
+<!-- ... Repeat for additional topics -->
+</section>
+<script> 
+    window.addEventListener('scroll', function () {
+        var nav = document.querySelector('.nav');
+        if (window.scrollY > 100) { // Adjust 100 to the desired scroll position
+            nav.style.display = 'none'; // Hide the navbar
+        } else {
+            nav.style.display = 'flex'; // Show the navbar
+        }
+    });
+</script>
+</body>
+</html>

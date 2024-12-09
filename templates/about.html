@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Healthcare</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            /* Default background color */
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: transparent;
+            /* Transparent background */
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+            /* Centered heading */
+            color: #090909;
+            font-size: 5rem;
+            /* Adjusted font size */
+            /* Bold font weight */
+            margin-bottom: 1px;
+            /* Added spacing */
+            font-family: cursive;
+            /* Stylish font */
+        }
+
+        p {
+            line-height: 1.6;
+            color: #090909;
+            margin-bottom: 15px;
+            /* Added spacing */
+        }
+
+        /* Added styling for medical professionals section */
+        .medical-professional {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .medical-professional img {
+            border-radius: 50%;
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            /* Added spacing */
+        }
+
+        .medical-professional p {
+            margin: 0;
+            /* Removed default margin */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="nav">
+                <div class="logo">
+                    <img src={{url_for('static',filename='logo.png' )}} alt="Logo">
+                </div>
+                <div class="links">
+                    <a href="./main.html" id="Homelink">Home</a>
+                    <a href="./about.html" class="mainlink">About</a>
+                    <a href="./doctors.html" id="doctorsLink">Doctors</a>
+                    <a href="./services.html" id="servicesLink">Services</a>
+                    <a href="./chatbot.html" id="chatbotLink">Chatbot</a>
+                    <a href="./contacts.html" id="contactsLink">Contact</a>
+                    <a href="./learn.html" id="learnLink">Learn more</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <br>
+    <br>
+    <section>
+        <h2><strong>About Us</strong></h2>
+        <br>
+        <br>
+        <br>
+
+        <p>Welcome to Medisen, your trusted partner in providing quality healthcare services. Our dedicated team of
+            <strong>medical professionals</strong> is committed to ensuring the well-being of our community.</p>
+        <p>At Medisen, we strive to offer a comprehensive range of healthcare services, including <strong>preventive care</strong>,
+            <strong>diagnostics</strong>, and specialized treatments. Our state-of-the-art facilities and compassionate staff create an
+            environment focused on your health and comfort.</p>
+        <p> Our vision constitutes:-
+            <strong>Accessible Healthcare</strong>,
+            <strong>Personalized Medicine</strong>,
+            <strong>Digital Convenience</strong>,
+            <strong>Preventive Focus</strong>, and
+            <strong>Responsive Customer Support</strong>.
+        </p>
+        <p>To tackle these problems often faced by our patients, including <strong>medical record management</strong>, <strong>communication barriers</strong>, <strong>appointment scheduling</strong>, <strong>medication management</strong>, <strong>care coordination</strong>, and the <strong>cost of healthcare</strong>, we employ various strategies such as:</p>
+        <ul>
+            <li><strong>Patient Identification Errors:</strong> PMIS ensures accurate patient identification, reducing errors.</li>
+            <li><strong>Data Fragmentation:</strong> Centralized database promotes interoperability, avoiding fragmented records.</li>
+            <li><strong>Accessibility:</strong> RFID technology enables quick access to patient records.</li>
+            <li><strong>Security:</strong> Robust measures protect patient data and ensure confidentiality.</li>
+            <li><strong>Interoperability:</strong> PMIS fosters seamless information exchange among providers.</li>
+        </ul>
+        <p>One of our main aspects is to spread awareness about <strong>mental health</strong>, a crucial but often overlooked aspect of healthcare. <strong>Mental health</strong> refers to a person's emotional, psychological, and social well-being. Among students, <strong>mental health</strong> issues such as increased stress levels, anxiety, depression, social isolation, and substance abuse are prevalent.</p>
+        <p>To address these challenges, we prioritize <strong>mental health awareness</strong> by offering free counseling sessions and access to mental health professionals. By educating individuals, reducing stigma, and providing support services, we strive to create a supportive environment where all students can thrive academically, emotionally, and socially.</p>
+    </section>
+    <script src="nav.js"></script>
+
+    <script>window.addEventListener('scroll', function() {
+        var nav = document.querySelector('.nav');
+        if (window.scrollY > 100) { // Adjust 100 to the desired scroll position
+            nav.style.display = 'none'; // Hide the navbar
+        } else {
+            nav.style.display = 'flex'; // Show the navbar
+        }
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Doctors - Healthcare</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        section {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2{
+            color: #333;
+        font-size: 3em; /* Adjust the font size */
+        text-align: center; /* Center align the text */
+        margin-bottom: 20px; /* Add some space below the heading */
+        font-family: 'Garamond', serif; /* Change the font family */
+        font-weight: bold; /* Make the text bold */
+        text-transform: uppercase;  }
+        
+        .doctor-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #bce6e7;
+            border-radius: 8px;
+            transition: box-shadow 0.3s;
+        }
+        .doctor-card:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .doctor-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+        .doctor-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .doctor-specialty {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 8px;
+        }
+        .doctor-description {
+            text-align: center;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="nav">
+                <div class="logo">
+                    <img src={{url_for('static',filename='logo.png')}} alt="Logo">
+                </div>
+                <div class="links">
+                    <a href="./main.html" >Home</a>
+                    <a href="./about.html">About</a>
+                    <a href="./doctors.html" class="mainlink"  >Doctors</a>
+                    <a href="./services.html">Services</a>
+                    <a href="./chatbot.html">Chatbot</a>
+                    <a href="./contacts.html">Contact</a>
+                    <a href="./learn.html" >Learn more</a>
+                </div>
+            </div>
+        </header>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    <section>
+        
+        <h2>Meet Our Doctors!!</h2>
+        <!-- Doctor 1 -->
+        <div class="doctor-card">
+            <img class="doctor-img" src={{url_for('static',filename='doc_arifkhan.webp')}} alt="Doctor 1">
+            <h3 class="doctor-name">Dr. Arif Khan</h3>
+            <p class="doctor-specialty">Cardiologist</p>
+            <p class="doctor-description">Dr. Arif Khan stands as a beacon of excellence in the field of cardiovascular medicine, boasting over 7 years of unwavering commitment to cardiac health. Renowned for his specialized expertise, Dr. Khan is dedicated to the diagnosis, management, and treatment of cardiovascular diseases with precision and compassion. His profound understanding of cardiac conditions, coupled with a patient-centric approach, ensures that each individual under his care receives tailored treatment plans aimed at optimizing heart health and enhancing overall well-being</p>
+        </div>
+        <div class="doctor-card">
+            <img class="doctor-img" src={{url_for('static',filename='doc_Neha_jaiswal.webp')}} alt="Doctor 2">
+            <h3 class="doctor-name">Dr. Neha Jaiswal</h3>
+            <p class="doctor-specialty">Pediatrician</p>
+            <p class="doctor-description">Dr. Neha Jaiswal stands as a beacon of compassion and expertise in pediatric and adolescent medicine, committed to delivering exceptional care to the youngest members of our community. With a heartfelt dedication to the well-being of children and adolescents, Dr. Jaiswal combines her extensive medical knowledge with a nurturing approach, ensuring that each young patient receives the highest standard of care.</p>
+        </div>
+        
+        <div class="doctor-card">
+            <img class="doctor-img" src={{url_for('static',filename='doc_Amit_sehgal.jpg')}} alt="Doctor 3">
+            <h3 class="doctor-name">Dr. Amit Sehgal</h3>
+            <p class="doctor-specialty">Counsellor and Therapists </p>
+            <p class="doctor-description">Dr. Amit Sehgal is a distinguished counselor and therapist renowned for his expertise in mental health treatment. With a compassionate approach, Dr. Sehgal provides invaluable support and guidance to individuals navigating challenges related to mental well-being. </p>
+        </div>
+
+
+        <div class="doctor-card">
+            <img class="doctor-img" src={{url_for('static',filename='drbabitagoel.webp')}} alt="Doctor 3">
+            <h3 class="doctor-name">Dr. Babita Goel</h3>
+            <p class="doctor-specialty">General Physician </p>
+            <p class="doctor-description">With a wealth of experience spanning over 25 years, Dr. Babita Goel stands as a pillar of expertise and compassion in the field of general medicine. As a seasoned general physician, Dr. Goel has dedicated her career to providing comprehensive healthcare to patients of all ages, offering a wide range of medical services and diagnostic expertise. Her deep-rooted commitment to patient well-being, coupled with her extensive experience, instills confidence and trust among her patients and peers alike. Dr. Goel's compassionate approach and meticulous attention to detail ensure that each patient receives personalized care tailored to their unique needs.  </p>
+        </div>
+    </section>
+    <script> 
+        window.addEventListener('scroll', function () {
+            var nav = document.querySelector('.nav');
+            if (window.scrollY > 100) { // Adjust 100 to the desired scroll position
+                nav.style.display = 'none'; // Hide the navbar
+            } else {
+                nav.style.display = 'flex'; // Show the navbar
+            }
+        });
+    </script>
+</body>
+</html>

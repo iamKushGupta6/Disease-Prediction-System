@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <style>
+       body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        /*header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }*/
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f1f5f7;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1{
+            color: #333;
+        font-size: 3em; /* Adjust the font size */
+        text-align: center; /* Center align the text */
+        margin-bottom: 20px; /* Add some space below the heading */
+        font-family: 'Garamond', serif; /* Change the font family */
+        font-weight: bold; /* Make the text bold */
+        text-transform: uppercase;  }
+        
+        h2 {
+            color: #333333;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .medical-professional {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .medical-professional img {
+            border-radius: 50%;
+            max-width: 100%;
+            height: auto;
+        }
+        .person {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+            padding: 1px;
+            border: 1px solid #4ce9c7;
+            border-radius: 6px;
+            transition: box-shadow 0.9s;
+    
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="nav">
+               <div class="logo">
+                 <img src={{url_for('static',filename='logo.png')}} alt="Logo">
+               </div>
+               <div class="links">
+                 <a href="./main.html" >Home</a>
+                 <a href="./about.html">About</a>
+                 <a href="./doctors.html">Doctors</a>
+                 <a href="./services.html">Services</a>
+                 <a href="./chatbot.html">Chatbot</a>
+                 <a href="./contacts.html" class="mainlink">Contact</a>
+                 <a href="./learn.html" >Learn more</a>
+               </div>
+            </div>
+        </div>
+    </header>
+    <br/>
+    <br/>
+    <br/>
+    <h1>Contact Us</h1>
+    <section class="person">
+        <h2>Project Manager</h2>
+        <p><strong>Name:</strong><span style="color: blue;">Gaurav Kumar Pal</span></p>
+        <p><strong>Email:</strong> gkpal524@gmail.com</p>
+        <p><strong>Contact No.:</strong> 7398583628</p>
+    </section>
+    <section class="person">
+        <h2>Lead Developer</h2>
+        <p><strong>Name:</strong><span style="color: blue;">Prasasth Tripathi</span></p>
+        <p><strong>Email:</strong>prasasth.2226csit110@kiet.edu </p>
+        <p><strong>Contact No.:</strong>8986328898</p>
+    </section>
+    <section class="person">
+        <h2>Community Outreach Coordinator</h2>
+        <p><strong>Name:</strong><span style="color: blue;">Lava Kaushik</span></p>
+        <p><strong>Email:</strong>lava.2226csit097@kiet.edu </p>
+        <p><strong>Contact No.:</strong> 7428878253</p>
+    </section>
+    <section class="person">
+        <h2>Marketing Specialist</h2>
+        <p><strong>Name:</strong> <span style="color: blue;">Kush Gupta</span></p>
+        <p><strong>Email:</strong>kushagra0602.rbl@gmail.com</p>
+        <p><strong>Contact No.:</strong> 8941813316</p>
+    </section>
+
+    <!--<section class="person">
+        <h2>Person 3</h2>
+        <p><strong>Name:</strong> <span style="color: blue;">Harsh Sharma</span></p>
+        <p><strong>Email:</strong> harsh.2226csit1073@kiet.edu</p>
+        <p><strong>Contact No.:</strong> 96253XXXXX</p>
+    </section>-->
+    <script> 
+        window.addEventListener('scroll', function () {
+            var nav = document.querySelector('.nav');
+            if (window.scrollY > 100) { // Adjust 100 to the desired scroll position
+                nav.style.display = 'none'; // Hide the navbar
+            } else {
+                nav.style.display = 'flex'; // Show the navbar
+            }
+        });
+    </script>
+</body>
+</html>

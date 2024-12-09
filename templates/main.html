@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Mo - Responsive Website (HealthCare)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/style.css">
+    <style>
+        /* Styles for the modal */
+        
+        .modal {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background: lightyellow;
+            margin: 5% auto;
+            padding: 20px;
+            border: none;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    
+        .social-button {
+            border: none;
+            cursor: pointer;
+            outline: none;
+            display: inline-block;
+            margin: 10px;
+            padding: 0;
+            background-color: transparent;
+        }
+
+        .social-button img {
+            vertical-align: middle;
+            height: 30px;
+            width: auto;
+        }
+
+        .button-text {
+            vertical-align: middle;
+            font-size: 16px;
+            margin-left: 5px;
+        }
+
+        /* Styling for regular buttons */
+        .login-btn {
+            border: none;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.5s;
+            margin-top: 10px;
+            display: block;
+            width: 100%;
+        }
+
+        .login-btn:hover {
+            background-color: #fefeff;
+        }
+        #loginButton:hover {
+     
+    color: #fff; /* Change to the desired text color when hovered */
+}
+
+
+        .forgot-btn,
+        .create-account-btn {
+            border: none;
+            background-color: transparent;
+            color: #090909;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.5s;
+            margin-top: 10px;
+            display: block;
+            width: 100%;
+        }
+
+        .forgot-btn:hover,
+        .create-account-btn:hover {
+            background-color: transparent;
+        }
+
+        .or-separator {
+            margin: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid #f3eded;
+            line-height: 0.1em;
+            background: linear-gradient(90deg, #d4d4dc, #f7f1f1);
+        }
+
+        .or-separator span {
+            background-color: linear-gradient(90deg, #eff2f2, #e8ecee);
+            padding: 0 10px;
+            color: #090909;
+        }
+
+        /* Styling for input boxes */
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 20px); /* Adjusted width to be same for both input fields */
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Styling for COMING SOON text */
+        .bannerImg h1 {
+            font-size: 2.5em;
+            color: #070707;
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="nav">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+            </div>
+            <div class="links">
+                <a href="./main.html" class="mainlink">Home</a>
+                <a href="./about.html" id="aboutLink">About</a>
+                <a href="./doctors.html" id="doctorsLink">Doctors</a>
+                <a href="./services.html" id="servicesLink">Services</a>
+                <a href="./chatbot.html" id="chatbotLink">Chatbot</a>
+                <a href="./contacts.html" id="contactsLink">Contact</a>
+                <a href="./learn.html" id="learnLink">Learn more</a>
+               
+                <!-- Login Button -->
+                <a href="#" id="loginButton" onclick="openLoginModal()" style="color: rgb(14, 14, 14); text-decoration: none; padding: 8px 12px; border: 0; border-radius: 5px;">Login</a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal login-modal" onclick="closeLoginModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h2>Login</h2>
+            <form onsubmit="event.preventDefault(); loginUser();">
+                <label for="username">Username/Email:</label>
+                <input type="text" id="username" name="username" required><br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br><br>
+                <button type="submit" class="login-btn">Login</button><br>
+                <!--<input type="checkbox" id="loginAsDoctor" name="loginAsDoctor"> Login as Doctor <br>-->
+                <a href="#" style="color: black;">Forget Password</a><br>
+                <div class="or-separator"> <span>Or sign in with:</span></div><br>                <!-- Google Login Button with Logo -->
+                <a href="#" class="social-button">
+                    <button type="button">
+                        <img src="../static/OIP.jpg" alt="Google Logo" style="vertical-align: middle;"
+                            class="googleimg">
+                        Sign in with Google
+                    </button>
+                </a>
+                <!-- Facebook Login Button with Logo -->
+                <a href="#" class="social-button">
+                    <button type="button">
+                        <img src="../static/facebook.webp" alt="Facebook Logo" style="vertical-align: middle;"
+                            class="Facebook">
+                        Sign in with Facebook
+                    </button>
+                </a>
+                <a href="#" style="color: black;">Create an account</a>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Landing Page -->
+    <div class="landing">
+        <div class="landingText" data-aos="fade-right" data-aos-duration="1000">
+            <h1><span style="color: #030303; font-size: 5vw;">Bringing The Future of</span> <span
+                    style="color: #e0501b; font-size: 5vw;">Health Care</span></h1>
+
+        </div>
+        <div class="landingImage" data-aos="fade-down" data-aos-duration="200">
+            <img src={{url_for('static',filename="banner_img.jpg" )}} alt="">
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+
+    <!-- Service Section -->
+    <div class="about">
+        <div class="aboutText" id="aboutText" data-aos="fade-up" data-aos-duration="100">
+            <h1>Our Patients Are at the Centre <span style="color: #2f8be0; font-size: 3vw;">of Everything We Do</span></h1>
+            <img src={{url_for('static',filename="ability_img.png" )}} alt="">
+        </div>
+        
+            <ol>
+                <li data-aos="fade-left" data-aos-duration="100">
+                    <span>01</span>
+                    <p>Modern Technology</p>
+                </li>
+                <li data-aos="fade-left" data-aos-duration="200">
+                    <span>02</span>
+                    <p>World-class Facilities</p>
+                </li>
+                <li data-aos="fade-left" data-aos-duration="300">
+                    <span>03</span>
+                    <p>Experienced Doctors</p>
+                </li>
+                <li data-aos="fade-left" data-aos-duration="400">
+                    <span>04</span>
+                    <p>24 Hours Support</p>
+                </li>
+            </ol>
+        </div>
+    </div>
+    
+    
+
+    <!-- Info Section -->
+    <div class="infoCards">
+
+        <div class="card one" data-aos="fade-up" data-aos-duration="1100">
+            <img src={{url_for('static',filename='banner_1.svg' )}} class="cardoneImg" alt="" data-aos="fade-up"
+                data-aos-duration="1100">
+            <div class="cardbgone"></div>
+            <div class="cardContent">
+                <h2>Health Service</h2>
+                <p>Empowering communities with comprehensive health services and wellness programs tailored to their unique needs</p>
+                <a href="#">
+                </a>
+            </div>
+        </div>
+
+        <div class="card two" data-aos="fade-up" data-aos-duration="1300">
+            <img src={{url_for('static',filename='banner_1.svg' )}} class="cardtwoImg" alt="" data-aos="fade-up"
+                data-aos-duration="1100">
+            <div class="cardbgtwo"></div>
+            <div class="cardContent">
+                <h2>Easy appointment</h2>
+                <p>Seamless appointment scheduling for your convenience, ensuring easy access to healthcare services</p>
+                <a href="#">
+                </a>
+            </div>
+        </div>
+
+        <div class="card three" data-aos="fade-up" data-aos-duration="1600">
+            <img src={{url_for('static',filename='banner_1.svg' )}} class="cardthreeImg" alt="" data-aos="fade-up"
+                data-aos-duration="1300">
+            <div class="cardbgthree"></div>
+            <div class="cardContent">
+                <h2>Qualified Doctors</h2>
+                <p>Connect with experienced and qualified doctors for personalized healthcare solutions tailored to your needs.</p>
+                <a href="#">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Banner and Footer -->
+    <div class="banner">
+        <div class="bannerText" data-aos="fade-right" data-aos-duration="1000">
+            <h1>Download the Medisen App Today <br> <span style="font-size: 1.6vw;font-weight: normal;"
+                    class="bannerInnertext">
+                    Stay updated and get all your medical needs taken care of!
+                </span></h1>
+            <a href="#"><img src={{url_for('static',filename='AndoidPNG.png' )}} alt=""></a>
+            <a href="#"><img src={{url_for('static',filename='iosPNG.png' )}} alt=""></a>
+        </div>
+        <div class="bannerImg" data-aos="fade-right" data-aos-duration="1000">
+            <a href="">
+                <img src={{url_for('static',filename='app.png' )}} alt="">
+                <h1> COMING SOON!!!</h1>
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js"></script>
+    <script src="nav.js"></script>
+
+    <script>
+      AOS.init();
+
+function openLoginModal() {
+    document.getElementById("loginModal").style.display = "block";
+}
+
+function closeLoginModal() {
+    document.getElementById("loginModal").style.display = "none";
+}
+
+function loginUser() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+    var loginAsDoctor = document.getElementById("loginAsDoctor").checked;
+
+    // Check if username and password match some default values
+    if (password === "gaur123") {
+        // Update login button text with the entered username
+        document.getElementById("loginButton").innerText = username;
+
+        if (loginAsDoctor) {
+            window.location.href = "./dashboard.html";
+        } else {
+            document.getElementById("loginButton").innerText = username;
+            loginButton.style.transition = "background-color 0.5s ease-in-out";
+            loginButton.style.backgroundColor = "#1E88E5";
+            document.getElementById("loginModal").style.display = "none";
+        }
+    } else {
+        // Alert for incorrect login
+        alert("Incorrect username or password");
+    }
+}
+
+
+// Close the modal if the user clicks outside of it
+window.onclick = function (event) {
+    var modal = document.getElementById("loginModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+
+
+
+window.addEventListener('scroll', function () {
+    var nav = document.querySelector('.nav');
+    if (window.scrollY > 100) { // Adjust 100 to the desired scroll position
+        nav.style.display = 'none'; // Hide the navbar
+    } else {
+        nav.style.display = 'flex'; // Show the navbar
+    }
+});
+    </script>
+</body>
+
+</html>

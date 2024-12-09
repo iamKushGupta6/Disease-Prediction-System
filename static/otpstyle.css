@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white; /* Change background color to white */
+    color: #2d0c0c6e;
+    margin: 0;
+    padding: 0;
+}
+
+section.disease {
+    margin: 20px;
+    padding: 20px;
+    background-color: #e0ccf99b;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease; /* Add animation to fade in each section */
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+h1 {
+    color: #0a0106;
+}
+
+h3 {
+    color: #070707;
+}
+
+.fix-appointment-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff; /* Change button color to blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.fix-appointment-btn:hover {
+    background-color: #0056b3; /* Darken button color on hover */
+}
